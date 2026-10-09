@@ -1,9 +1,12 @@
 import "./App.css";
+import Customer from "./components/Customer";
+import Account from "./components/Account";
 
 function App() {
   return (
     <>
-      <div>Hello</div>
+      <Customer />
+      <Account />
     </>
   );
 }
