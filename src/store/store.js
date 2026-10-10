@@ -6,14 +6,10 @@ import { deposit } from "./account/accountSlice";
 import { create } from "./customer/customerSlice";
 
 const reducer = combineReducers({
-  customerReducer,
-  accountReducer,
+  customer: customerReducer,
+  account: accountReducer,
 });
 
 const store = createStore(reducer);
 
-store.dispatch(deposit(1000));
-
-store.dispatch(create("Abdul", 1242547));
-
-console.log(store.getState());
+export default store;

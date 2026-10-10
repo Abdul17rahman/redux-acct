@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function Account() {
+  // const [ loan, setLoan ] = useState()
+  const [payment, setPayment] = useState(null);
+
+  const customer = useSelector((state) => state.customer);
+  console.log(customer);
+  function handlePayment(amount) {
+    setPayment(amount);
+  }
+
   return (
     <div>
       <h1>Account Details</h1>
       <h2>Bal:</h2>
 
-      <h4>Customer name:</h4>
+      <h4>Customer name: {customer?.name}</h4>
 
       <div>
         <label htmlFor="deposit">Deposit:</label>
@@ -39,8 +49,13 @@ export default function Account() {
       <div>
         <button type="submit">PayFullAmount</button>
         <label htmlFor="amount">Amount:</label>
-        <input type="number" name="amount" id="amount" />
-        <button type="submit">Pay</button>
+        <input
+          type="number"
+          name="amount"
+          id="amount"
+          onChange={(e) => handlePayment(e.target.value)}
+        />
+        <button type="submit">Pay {payment}</button>
       </div>
     </div>
   );
